@@ -1,16 +1,94 @@
-#include <stdio.h>
+#include<stdbool.h>
+#include<stdio.h>
+#include <ctype.h>
+#include <memory.h>
 
-main() {
-    printf("%i \n", plus(6, 7));
-    printf("%i", minus(6, 7));
+void main() {
+    createMenu();
 }
 
-// Cộng hai số với tham số đầu vào
-// là a, b là hai số nguyên.
-int plus(int a, int b) {
-    return a + b;
+createMenu() {
+    while (true) {
+        int choice;
+        printf("-----------------Menu-----------------\n");
+        printf("1. Show student list.\n");
+        printf("2. Add new student.\n");
+        printf("3. Edit student.\n");
+        printf("4. Delete student.\n");
+        printf("5. Exit.\n");
+        printf("--------------------------------------\n");
+        printf("Please enter your choice: ");
+        scanf("%d", &choice);
+        getchar();
+        if (choice == 5) {
+            printf("End program.");
+            break;
+        }
+        switch (choice) {
+            case 1:
+                // do something.
+                printf("Show student list.\n");
+                showStudent();
+                break;
+            case 2:
+                // do something.
+                addStudent();
+                break;
+            case 3:
+                // do something.
+                printf("Edit student.\n");
+                editStudent();
+                break;
+            case 4:
+                // do something.
+                printf("Delete student.\n");
+                deleteStudent();
+                break;
+            default:
+                //
+                printf("Please enter a number from 1 to 5.\n");
+                break;
+        }
+    }
 }
 
-int minus(int a, int b){
-    return a - b;
+showStudent() {
+
+}
+
+addStudent() {
+    char name[100];
+    char birthday[100];
+    char phone[100];
+    bool isValidName = false; // Kiểm tra tính hợp lệ của tên.
+    printf("Add new student.\n");
+    while (!isValidName){ // Nếu tên không hợp lệ thì tiếp tục bắt nhập.
+        printf("Please enter name: \n");
+        fgets(name, sizeof(name), stdin);
+        int lengthOfName = strlen(name) - 1;
+        if (lengthOfName < 3) {
+            printf("Name is too short. Please enter number between 3 to 15 character.\n");
+        } else if (lengthOfName > 15) {
+            printf("Name is too long. Please enter number between 3 to 15 character.\n");
+        } else {
+            isValidName = true;
+        }
+    }
+    printf("Please enter birthday: \n");
+    fgets(birthday, sizeof(birthday), stdin);
+
+    printf("Please enter phone: \n");
+    fgets(phone, sizeof(phone), stdin);
+
+    printf("Name: %s \n", name);
+    printf("Birthday: %s \n", birthday);
+    printf("Phone: %s \n", phone);
+}
+
+editStudent() {
+
+}
+
+deleteStudent() {
+
 }
